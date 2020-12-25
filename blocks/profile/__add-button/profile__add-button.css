@@ -1,0 +1,7 @@
+.profile__add-button {
+  background-color: black;
+  border: solid 2px white;
+  border-radius: 2px;
+  justify-content: revert;
+  justify-self: baseline;
+}

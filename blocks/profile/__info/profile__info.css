@@ -1,0 +1,7 @@
+.profile__info {
+  padding-left: 30px;
+  display: grid;
+  grid-template-columns: minmax(max-content, max-content) 24px;
+  grid-template-rows: minmax(max-content, max-content) minmax(max-content, max-content);
+  width: 100%;
+}
