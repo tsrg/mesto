@@ -16,7 +16,7 @@
   <img class="profile__avatar" src="./images/avatar.jpg" alt="Аватар">
   <div class="profile__info">
     <h1 class="profile__title">Жак-Ив Кусто</h1>
-    <button class="profile__edit-button"><img src="./images/pencil.svg" alt="Редактирование профиля"></button>
+    <button class="profile__edit-button" onclick="openPopup()"><img src="./images/pencil.svg" alt="Редактирование профиля"></button>
     <p class="profile__subtitle">Исследователь океана</p>
   </div>
   <button class="profile__add-button"><img class="profile__plus" src="./images/plus.svg" alt="Добавить"></button>
@@ -64,6 +64,21 @@
   </article>
 </section>
 </main>
-<footer style="footer">
+<section class="popup popup_hiden">
+  <form class="popup__container">
+    <p class="popup__title">Редактировать профиль</p>
+    <input type="text" placeholder="Имя" class="popup__input popup__input_type_name">
+    <input type="text" placeholder="Описание" class="popup__input popup__input_type_description">
+    <input type="submit" class="popup__submit-btn">
+      Сохранить
+    </input>
+    <button class="popup__close-btn">
+      <img src="./images/Close-Icon.svg" alt="Закрыть" onclick="closePopup()">
+    </button>
+  </form>
+</section>
+<footer class="footer">
+  <p class="footer__copyrights">&#169; 2020 Mesto Russia</p>
 </footer>
+<script src="./scripts/script.js"></script>
 </body>
