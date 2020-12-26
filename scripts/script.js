@@ -9,13 +9,12 @@ function openPopup() {
   let popupDescr = formElement.querySelector('.popup__input_type_description');
   popupName.value = profileName;
   popupDescr.value = profileDescription;
-  console.log (profileName, profileDescription);
 
-  formElement.classList.remove('popup_hiden');
+  formElement.classList.add('popup_opened');
 }
 
 function closePopup() {
-  formElement.classList.add('popup_hiden');
+  formElement.classList.remove('popup_opened');
 }
 
 function handleFormSubmit (evt) {
@@ -24,7 +23,7 @@ function handleFormSubmit (evt) {
     let jobInput = formElement.querySelector('.popup__input_type_description');
     profileInfo.querySelector('.profile__title').textContent = nameInput.value;
     profileInfo.querySelector('.profile__subtitle').textContent = jobInput.value;
-    formElement.classList.add('popup_hiden');
+    formElement.classList.remove('popup_opened');
 }
 
 

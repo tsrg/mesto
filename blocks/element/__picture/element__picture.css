@@ -2,5 +2,5 @@
   height: 100%;
   min-width: 100%;
   object-fit: cover;
-  image-orientation: from-image;
+  object-position: center;
 }

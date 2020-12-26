@@ -5,12 +5,12 @@
   background-color: #0000007c;
   top: 0;
   left: 0;
-  display: flex;
   justify-content: center;
   align-content: center;
   min-width: 320px;
+  display: none;
 }
 
-.popup_hiden {
-  display: none;
+.popup_opened {
+  display: flex;
 }
