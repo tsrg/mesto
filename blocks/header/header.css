@@ -3,3 +3,19 @@
   margin: 0 auto;
   border-bottom: solid 1px #545454;
 }
+
+@media all and (max-width:920px) {
+
+  .header {
+      padding-left: 17px;
+      padding-right: 17px;
+  }
+}
+
+@media all and (max-width:683px) {
+
+  .header {
+      padding-left: 19px;
+      padding-right: 19px;
+  }
+}

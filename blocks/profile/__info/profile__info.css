@@ -5,3 +5,14 @@
   grid-template-rows: minmax(max-content, max-content) minmax(max-content, max-content);
   width: 100%;
 }
+
+@media all and (max-width:683px) {
+
+  .profile__info {
+    grid-template-areas: "name edit" 
+                         "job job";
+    justify-content: center;
+    padding-left: 0;
+    padding-top: 26px;
+  }
+}
