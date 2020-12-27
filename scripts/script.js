@@ -25,7 +25,7 @@ function handleFormSubmit (evt) {
     let jobInput = popupDescr;
     profileName.textContent = nameInput.value;
     profileInfo.querySelector('.profile__subtitle').textContent = jobInput.value;
-    formElement.classList.remove('popup_opened');
+    closePopup();
 }
 
 console.log(document.querySelector('.profile__edit-button'))
