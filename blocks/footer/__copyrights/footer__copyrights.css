@@ -3,6 +3,7 @@
   font-weight: normal;
   font-size: 18px;
   line-height: 22px;
+  padding-top: 66px;
 }
 
 @media all and (max-width:683px) {
@@ -10,5 +11,6 @@
   .footer__copyrights {
     font-size: 14px;
     line-height: 17px;
+    padding-top: 48px;
   }
 }
