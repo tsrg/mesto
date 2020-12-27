@@ -3,7 +3,6 @@
   border-radius: 10px;
   margin: auto;
   max-width: calc(430px - 72px);
-  max-height: calc(330px - 72px);
   padding: 36px;
   position: relative;
 }

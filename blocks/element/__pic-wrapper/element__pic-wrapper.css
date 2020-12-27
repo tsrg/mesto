@@ -6,7 +6,6 @@
   overflow: hidden;
   background-position: center;
   background-size: cover;
-  background-image: url('../../../images/IMG_0417.JPG');
 }
 
 @media all and (max-width:920px) {

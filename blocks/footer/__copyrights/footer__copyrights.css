@@ -4,3 +4,11 @@
   font-size: 18px;
   line-height: 22px;
 }
+
+@media all and (max-width:683px) {
+
+  .footer__copyrights {
+    font-size: 14px;
+    line-height: 17px;
+  }
+}

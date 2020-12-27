@@ -16,7 +16,7 @@
   <img class="profile__avatar" src="./images/avatar.jpg" alt="Аватар">
   <div class="profile__info">
     <h1 class="profile__title">Жак-Ив Кусто</h1>
-    <button class="profile__edit-button" onclick="openPopup()"></button>
+    <button class="profile__edit-button" id="1"></button>
     <p class="profile__subtitle">Исследователь океана</p>
   </div>
   <button class="profile__add-button"></button>
@@ -57,7 +57,8 @@
       <h2 class="element__title">Гора Эльбрус</h2>
       <button class="element__like-btn"></button>
     </div>
-  </article>  <article class="element">
+  </article>
+  <article class="element">
     <div class="element__pic-wrapper">
       <img class="element__picture" src="./images/karach.jpg" alt="Карачаевск">
     </div>
@@ -65,7 +66,8 @@
       <h2 class="element__title">Карачаевск</h2>
       <button class="element__like-btn"></button>
     </div>
-  </article>  <article class="element">
+  </article>
+  <article class="element">
     <div class="element__pic-wrapper">
       <img class="element__picture" src="./images/dombai.png" alt="Домбай">
     </div>
@@ -76,11 +78,11 @@
   </article>
 </section>
 </main>
-<section class="popup popup_hiden">
-  <form class="popup__container">
-    <p class="popup__title">Редактировать профиль</p>
-    <input type="text" placeholder="Имя" class="popup__input popup__input_type_name">
-    <input type="text" placeholder="Описание" class="popup__input popup__input_type_description">
+<section class="popup">
+  <form name="author-info" class="popup__container">
+    <h2 class="popup__title">Редактировать профиль</h2>
+    <input type="text" name="author-name" placeholder="Имя" class="popup__input popup__input_type_name">
+    <input type="text" name="athor-description" placeholder="Описание" class="popup__input popup__input_type_description">
     <input type="submit" class="popup__submit-btn" value="Сохранить">
     <button class="popup__close-btn"></button>
   </form>
