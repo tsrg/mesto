@@ -7,14 +7,14 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  max-width: calc(100vw - 450px);
+  max-width: calc(100vw - 470px);
 }
 
 @media all and (max-width:683px) {
-
   .profile__title {
     grid-area: name;
     font-size: 26px;
     line-height: 32px;
+    max-width: calc(100vw - 100px);
   }
 }
