@@ -45,6 +45,7 @@ function createCard (name, link) {
   card.querySelector('.element__picture').src = link;
   card.querySelector('.element__picture').alt = name;
   card.querySelector('.element__title').textContent = name;
+  card.querySelector('.element__like-btn').addEventListener('click', likeButtonClick);
 
   Cards.prepend(card);
 }
@@ -115,3 +116,8 @@ function addPlaceFormSubmit (evt) {
 fromAddPlace.addEventListener('submit', addPlaceFormSubmit);
 placeAddCloseButton.addEventListener('click', closePopupAddPlace);
 placeAddButton.addEventListener("click", openPopupAddPlace);
+
+
+function likeButtonClick (evt) {
+  evt.target.classList.toggle('element__like-btn_active');
+}
