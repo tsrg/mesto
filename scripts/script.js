@@ -46,7 +46,7 @@ function createCard (name, link) {
   card.querySelector('.element__picture').alt = name;
   card.querySelector('.element__title').textContent = name;
 
-  Cards.append(card);
+  Cards.prepend(card);
 }
 
 
