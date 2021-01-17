@@ -34,17 +34,17 @@ const initialCards = [
 //initialContent
 
 initialCards.forEach((item) => {
-  createCard(item);
+  createCard(item.name, item.link);
 });
 
 
 
 
-function createCard (cardContent) {
+function createCard (name, link) {
   const card = cardsTempalte.cloneNode(true);
-  card.querySelector('.element__picture').src = cardContent.link;
-  card.querySelector('.element__picture').alt = cardContent.name;
-  card.querySelector('.element__title').textContent = cardContent.name;
+  card.querySelector('.element__picture').src = link;
+  card.querySelector('.element__picture').alt = name;
+  card.querySelector('.element__title').textContent = name;
 
   Cards.append(card);
 }
@@ -59,7 +59,7 @@ let popupDescr = formElement.querySelector('.popup__input_type_description');
 let profileDescription = profileInfo.querySelector('.profile__subtitle');
 let nameInput = formElement.querySelector('.popup__input_type_name');
 let editButton = document.querySelector('.profile__edit-button');
-let closeButton = formElement.querySelector('.popup__close-btn')
+let closeButton = formElement.querySelector('.popup__close-btn');
 
 
 
@@ -88,3 +88,30 @@ editButton.addEventListener("click", openPopupAuthor);
 
 //popup addPlace
 
+let fromAddPlace = document.querySelector('.popup__type_add-place');
+let placeAddButton = document.querySelector('.profile__add-button');
+let placeAddCloseButton = fromAddPlace.querySelector('.popup__close-btn');
+//let placeName = fromAddPlace.querySelector('.popup__input_type_place-name').value;
+//let placePhoto = fromAddPlace.querySelector('.popup__input_type_photo').value;
+
+function closePopupAddPlace() {
+  fromAddPlace.classList.remove('popup_opened');
+}
+
+function openPopupAddPlace() {
+
+  fromAddPlace.classList.add('popup_opened');
+}
+
+function addPlaceFormSubmit (evt) {
+    evt.preventDefault();
+    fromAddPlace = document.querySelector('.popup__type_add-place');
+    const placeName = fromAddPlace.querySelector('.popup__input_type_place-name').value;
+    const placePhoto = fromAddPlace.querySelector('.popup__input_type_photo').value;
+    createCard(placeName, placePhoto);
+    closePopupAddPlace();
+}
+
+fromAddPlace.addEventListener('submit', addPlaceFormSubmit);
+placeAddCloseButton.addEventListener('click', closePopupAddPlace);
+placeAddButton.addEventListener("click", openPopupAddPlace);
