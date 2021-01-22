@@ -34,10 +34,6 @@ const initialCards = [
 
 //initialContent
 
-initialCards.forEach((item) => {
-  createCard(item.name, item.link);
-});
-
 function createCard (name, link) {
   const card = cardsTempalte.cloneNode(true);
   card.querySelector('.element__picture').src = link;
@@ -50,6 +46,9 @@ function createCard (name, link) {
   Cards.prepend(card);
 }
 
+initialCards.forEach((item) => {
+  createCard(item.name, item.link);
+});
 
 //IMG popup
 function openImgPopUp(evt) {
@@ -135,13 +134,6 @@ function fadePopupAddPlace() {
   fromAddPlace.addEventListener('animationend', ClosePopupAddPlace);
 }
 
-function ClosePopupAddPlace () {
-  fromAddPlace.classList.toggle('popup_closed');
-  fromAddPlace.classList.toggle('popup_opened');
-  fromAddPlace.removeEventListener('animationend', ClosePopupAddPlace);
-  fromAddPlace.classList.remove('popup_fadeout');
-}
-
 function openPopupAddPlace() {
   fromAddPlace.classList.toggle('popup_opened');
   fromAddPlace.classList.toggle('popup_closed');
@@ -153,8 +145,16 @@ function addPlaceFormSubmit (evt) {
     const placeName = fromAddPlace.querySelector('.popup__input_type_place-name').value;
     const placePhoto = fromAddPlace.querySelector('.popup__input_type_photo').value;
     createCard(placeName, placePhoto);
-    closePopupAddPlace();
+    //closePopupAddPlace;
 }
+
+function ClosePopupAddPlace () {
+  fromAddPlace.classList.toggle('popup_closed');
+  fromAddPlace.classList.toggle('popup_opened');
+  fromAddPlace.removeEventListener('animationend', ClosePopupAddPlace);
+  fromAddPlace.classList.remove('popup_fadeout');
+}
+
 
 fromAddPlace.addEventListener('submit', addPlaceFormSubmit);
 placeAddCloseButton.addEventListener('click', fadePopupAddPlace);
