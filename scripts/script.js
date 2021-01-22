@@ -2,6 +2,7 @@
 
 
 const cardsTempalte = document.querySelector('#cards-tempalte').content;
+//const imgPopUpTempalte = document.querySelector('.image-popup').content;
 const Cards = document.querySelector('.elements');
 const initialCards = [
   {
@@ -37,9 +38,6 @@ initialCards.forEach((item) => {
   createCard(item.name, item.link);
 });
 
-
-
-
 function createCard (name, link) {
   const card = cardsTempalte.cloneNode(true);
   card.querySelector('.element__picture').src = link;
@@ -47,10 +45,41 @@ function createCard (name, link) {
   card.querySelector('.element__title').textContent = name;
   card.querySelector('.element__like-btn').addEventListener('click', likeButtonClick);
   card.querySelector('.element__remove-btn').addEventListener('click', removeButtonClick);
+  card.querySelector('.element__picture').addEventListener('click', openImgPopUp);
 
   Cards.prepend(card);
 }
 
+
+//IMG popup
+function openImgPopUp(evt) {
+  const imgPopUp = document.querySelector('.img-popup');
+  const imgLink = evt.target.src;
+  const imgName = evt.target.alt;
+  //const footer = document.querySelector('.footer');
+  imgPopUp.querySelector('.img-popup__picture').src = imgLink;
+  imgPopUp.querySelector('.img-popup__picture').alt = imgName;
+  imgPopUp.querySelector('.img-popup__title').textContent = imgName;
+  imgPopUp.classList.toggle('popup_opened');
+  imgPopUp.classList.toggle('popup_closed');
+  imgPopUp.querySelector('.img-popup__close-btn').addEventListener('click', fadeImgPopUp);
+}
+
+function fadeImgPopUp(evt) {
+  const imgPopUp = evt.target.parentNode.parentNode;
+
+  imgPopUp.classList.add('popup_fadeout');
+  imgPopUp.addEventListener('animationend', CloseImgPopup);
+}
+
+function CloseImgPopup () {
+  const imgPopUp = document.querySelector('.img-popup');
+console.log(imgPopUp);
+  imgPopUp.classList.toggle('popup_closed');
+  imgPopUp.classList.toggle('popup_opened');
+  imgPopUp.removeEventListener('animationend', CloseImgPopup);
+  imgPopUp.classList.remove('popup_fadeout');
+}
 
 
 //pop-up author
@@ -64,16 +93,24 @@ let editButton = document.querySelector('.profile__edit-button');
 let closeButton = formElement.querySelector('.popup__close-btn');
 
 
-
 function closePopupAuthor() {
-  formElement.classList.remove('popup_opened');
+  formElement.classList.toggle('popup_opened');
+  formElement.classList.add('popup_fadeout');
+  formElement.addEventListener('animationend', actClosePopup);
+};
+
+function actClosePopup () {
+  formElement.classList.toggle('popup_closed');
+  formElement.removeEventListener('animationend', actClosePopup);
+  formElement.classList.remove('popup_fadeout');
 }
 
 function openPopupAuthor() {
 
   nameInput.value = profileName.innerHTML;
   popupDescr.value = profileDescription.innerHTML;
-  formElement.classList.add('popup_opened');
+  formElement.classList.toggle('popup_opened');
+  formElement.classList.toggle('popup_closed');
 }
 
 function handleFormSubmit (evt) {
@@ -89,20 +126,25 @@ editButton.addEventListener("click", openPopupAuthor);
 
 
 //popup addPlace
-
 let fromAddPlace = document.querySelector('.popup__type_add-place');
 let placeAddButton = document.querySelector('.profile__add-button');
 let placeAddCloseButton = fromAddPlace.querySelector('.popup__close-btn');
-//let placeName = fromAddPlace.querySelector('.popup__input_type_place-name').value;
-//let placePhoto = fromAddPlace.querySelector('.popup__input_type_photo').value;
 
-function closePopupAddPlace() {
-  fromAddPlace.classList.remove('popup_opened');
+function fadePopupAddPlace() {
+  fromAddPlace.classList.add('popup_fadeout');
+  fromAddPlace.addEventListener('animationend', ClosePopupAddPlace);
+}
+
+function ClosePopupAddPlace () {
+  fromAddPlace.classList.toggle('popup_closed');
+  fromAddPlace.classList.toggle('popup_opened');
+  fromAddPlace.removeEventListener('animationend', ClosePopupAddPlace);
+  fromAddPlace.classList.remove('popup_fadeout');
 }
 
 function openPopupAddPlace() {
-
-  fromAddPlace.classList.add('popup_opened');
+  fromAddPlace.classList.toggle('popup_opened');
+  fromAddPlace.classList.toggle('popup_closed');
 }
 
 function addPlaceFormSubmit (evt) {
@@ -115,7 +157,7 @@ function addPlaceFormSubmit (evt) {
 }
 
 fromAddPlace.addEventListener('submit', addPlaceFormSubmit);
-placeAddCloseButton.addEventListener('click', closePopupAddPlace);
+placeAddCloseButton.addEventListener('click', fadePopupAddPlace);
 placeAddButton.addEventListener("click", openPopupAddPlace);
 
 //like
@@ -128,3 +170,4 @@ function removeButtonClick (evt) {
   const card = evt.target.parentNode;
   card.remove();
 }
+
