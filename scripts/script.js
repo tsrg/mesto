@@ -83,7 +83,7 @@ console.log(imgPopUp);
 
 //pop-up author
 let profileInfo = document.querySelector('.profile__info');
-let formElement = document.querySelector('.popup__type_author');
+let formElement = document.querySelector('.popup_type_author');
 let profileName = profileInfo.querySelector('.profile__title')
 let popupDescr = formElement.querySelector('.popup__input_type_description');
 let profileDescription = profileInfo.querySelector('.profile__subtitle');
@@ -125,7 +125,7 @@ editButton.addEventListener("click", openPopupAuthor);
 
 
 //popup addPlace
-let fromAddPlace = document.querySelector('.popup__type_add-place');
+let fromAddPlace = document.querySelector('.popup_type_add-place');
 let placeAddButton = document.querySelector('.profile__add-button');
 let placeAddCloseButton = fromAddPlace.querySelector('.popup__close-btn');
 
@@ -141,7 +141,7 @@ function openPopupAddPlace() {
 
 function addPlaceFormSubmit (evt) {
     evt.preventDefault();
-    fromAddPlace = document.querySelector('.popup__type_add-place');
+    fromAddPlace = document.querySelector('.popup_type_add-place');
     const placeName = fromAddPlace.querySelector('.popup__input_type_place-name').value;
     const placePhoto = fromAddPlace.querySelector('.popup__input_type_photo').value;
     createCard(placeName, placePhoto);
