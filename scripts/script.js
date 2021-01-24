@@ -2,8 +2,7 @@
 
 
 const cardsTempalte = document.querySelector('#cards-tempalte').content;
-//const imgPopUpTempalte = document.querySelector('.image-popup').content;
-const Cards = document.querySelector('.elements');
+const cards = document.querySelector('.elements');
 const initialCards = [
   {
     name: 'Архыз',
@@ -33,21 +32,25 @@ const initialCards = [
 
 
 //initialContent
-
 function createCard (name, link) {
   const card = cardsTempalte.cloneNode(true);
-  card.querySelector('.element__picture').src = link;
-  card.querySelector('.element__picture').alt = name;
+  const picture = card.querySelector('.element__picture');
+  picture.src = link;
+  picture.alt = name;
   card.querySelector('.element__title').textContent = name;
   card.querySelector('.element__like-btn').addEventListener('click', likeButtonClick);
   card.querySelector('.element__remove-btn').addEventListener('click', removeButtonClick);
-  card.querySelector('.element__picture').addEventListener('click', openImgPopUp);
+  picture.addEventListener('click', openImgPopUp);
+  return card;
+}
 
-  Cards.prepend(card);
+function addCard (container, cardElement) {
+  container.prepend(cardElement);
 }
 
 initialCards.forEach((item) => {
-  createCard(item.name, item.link);
+  const elements = document.querySelector('.elements');
+  addCard(elements, createCard(item.name, item.link));
 });
 
 //IMG popup
@@ -55,9 +58,9 @@ function openImgPopUp(evt) {
   const imgPopUp = document.querySelector('.img-popup');
   const imgLink = evt.target.src;
   const imgName = evt.target.alt;
-  //const footer = document.querySelector('.footer');
-  imgPopUp.querySelector('.img-popup__picture').src = imgLink;
-  imgPopUp.querySelector('.img-popup__picture').alt = imgName;
+  const picture = imgPopUp.querySelector('.img-popup__picture');
+  picture.src = imgLink;
+  picture.alt = imgName;
   imgPopUp.querySelector('.img-popup__title').textContent = imgName;
   imgPopUp.classList.toggle('popup_opened');
   imgPopUp.classList.toggle('popup_closed');
@@ -71,9 +74,8 @@ function fadeImgPopUp(evt) {
   imgPopUp.addEventListener('animationend', CloseImgPopup);
 }
 
-function CloseImgPopup () {
+function closeImgPopup () {
   const imgPopUp = document.querySelector('.img-popup');
-console.log(imgPopUp);
   imgPopUp.classList.toggle('popup_closed');
   imgPopUp.classList.toggle('popup_opened');
   imgPopUp.removeEventListener('animationend', CloseImgPopup);
@@ -82,14 +84,14 @@ console.log(imgPopUp);
 
 
 //pop-up author
-let profileInfo = document.querySelector('.profile__info');
-let formElement = document.querySelector('.popup_type_author');
-let profileName = profileInfo.querySelector('.profile__title')
-let popupDescr = formElement.querySelector('.popup__input_type_description');
-let profileDescription = profileInfo.querySelector('.profile__subtitle');
-let nameInput = formElement.querySelector('.popup__input_type_name');
-let editButton = document.querySelector('.profile__edit-button');
-let closeButton = formElement.querySelector('.popup__close-btn');
+const profileInfo = document.querySelector('.profile__info');
+const formElement = document.querySelector('.popup_type_author');
+const profileName = profileInfo.querySelector('.profile__title')
+const popupDescr = formElement.querySelector('.popup__input_type_description');
+const profileDescription = profileInfo.querySelector('.profile__subtitle');
+const nameInput = formElement.querySelector('.popup__input_type_name');
+const editButton = document.querySelector('.profile__edit-button');
+const closeButton = formElement.querySelector('.popup__close-btn');
 
 
 function closePopupAuthor() {
@@ -106,8 +108,8 @@ function actClosePopup () {
 
 function openPopupAuthor() {
 
-  nameInput.value = profileName.innerHTML;
-  popupDescr.value = profileDescription.innerHTML;
+  nameInput.value = profileName.textContent;
+  popupDescr.value = profileDescription.textContent;
   formElement.classList.toggle('popup_opened');
   formElement.classList.toggle('popup_closed');
 }
@@ -126,12 +128,11 @@ editButton.addEventListener("click", openPopupAuthor);
 
 //popup addPlace
 let fromAddPlace = document.querySelector('.popup_type_add-place');
-let placeAddButton = document.querySelector('.profile__add-button');
-let placeAddCloseButton = fromAddPlace.querySelector('.popup__close-btn');
+const placeAddButton = document.querySelector('.profile__add-button');
+const placeAddCloseButton = fromAddPlace.querySelector('.popup__close-btn');
 
 function fadePopupAddPlace() {
-  fromAddPlace.classList.add('popup_fadeout');
-  fromAddPlace.addEventListener('animationend', ClosePopupAddPlace);
+  
 }
 
 function openPopupAddPlace() {
@@ -140,19 +141,24 @@ function openPopupAddPlace() {
 }
 
 function addPlaceFormSubmit (evt) {
-    evt.preventDefault();
-    fromAddPlace = document.querySelector('.popup_type_add-place');
-    const placeName = fromAddPlace.querySelector('.popup__input_type_place-name').value;
-    const placePhoto = fromAddPlace.querySelector('.popup__input_type_photo').value;
-    createCard(placeName, placePhoto);
-    //closePopupAddPlace;
+  evt.preventDefault();
+  fromAddPlace = document.querySelector('.popup_type_add-place');
+  const placeName = fromAddPlace.querySelector('.popup__input_type_place-name').value;
+  const placePhoto = fromAddPlace.querySelector('.popup__input_type_photo').value;
+  const newCard = createCard(placeName, placePhoto);
+  fromAddPlace.querySelector('.popup__container').reset();
+  closePopupAddPlace ();
 }
 
-function ClosePopupAddPlace () {
-  fromAddPlace.classList.toggle('popup_closed');
-  fromAddPlace.classList.toggle('popup_opened');
-  fromAddPlace.removeEventListener('animationend', ClosePopupAddPlace);
-  fromAddPlace.classList.remove('popup_fadeout');
+function closePopupAddPlace () {
+  fromAddPlace.classList.add('popup_fadeout');
+  fromAddPlace.addEventListener('animationend', close);
+  function close () {
+    fromAddPlace.classList.toggle('popup_closed');
+    fromAddPlace.classList.toggle('popup_opened');
+    fromAddPlace.removeEventListener('animationend', close);
+    fromAddPlace.classList.remove('popup_fadeout');
+  };
 }
 
 
@@ -167,7 +173,6 @@ function likeButtonClick (evt) {
 
 //remove card
 function removeButtonClick (evt) {
-  const card = evt.target.parentNode;
-  card.remove();
+  evt.target.closest('.element').remove();
 }
 
