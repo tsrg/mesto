@@ -39,8 +39,8 @@
 <section class="popup popup_type_add-place popup_closed">
   <form name="author-info" class="popup__container">
     <h2 class="popup__title">Новое место</h2>
-    <input type="text" name="place-name" placeholder="Название" class="popup__input popup__input_type_place-name">
-    <input type="text" name="place-photo" placeholder="Ссылка на картинку" class="popup__input popup__input_type_photo">
+    <input type="text" required name="place-name" placeholder="Название" class="popup__input popup__input_type_place-name">
+    <input type="url" required name="place-photo" placeholder="Ссылка на картинку" class="popup__input popup__input_type_photo">
     <input type="submit" class="popup__submit-btn" value="Создать">
     <button class="popup__close-btn" type="button"></button>
   </form>

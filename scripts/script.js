@@ -1,6 +1,4 @@
 //cards
-
-
 const cardsTempalte = document.querySelector('#cards-tempalte').content;
 const cards = document.querySelector('.elements');
 const initialCards = [
@@ -48,11 +46,13 @@ function addCard (container, cardElement) {
   container.prepend(cardElement);
 }
 
+const elements = document.querySelector('.elements');
+
 initialCards.forEach((item) => {
-  const elements = document.querySelector('.elements');
   addCard(elements, createCard(item.name, item.link));
 });
 
+// PopUp
 function openPopUp (popUp) {
   popUp.classList.toggle('popup_opened');
   popUp.classList.toggle('popup_closed');
@@ -122,7 +122,9 @@ function addPlaceFormSubmit (evt) {
   const placePhoto = fromAddPlace.querySelector('.popup__input_type_photo').value;
   const newCard = createCard(placeName, placePhoto);
   fromAddPlace.querySelector('.popup__container').reset();
+  addCard(elements, newCard);
   closePopUp(fromAddPlace);
+  return newCard;
 }
 
 fromAddPlace.addEventListener('submit', addPlaceFormSubmit);
