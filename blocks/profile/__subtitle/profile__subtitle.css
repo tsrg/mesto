@@ -7,7 +7,14 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  max-width: calc(100vw - 470px);
+  max-width: 500px;
+}
+
+@media all and (max-width:890px) {
+
+  .profile__subtitle {
+    max-width: calc(100vw - 405px);
+  }
 }
 
 @media all and (max-width:683px) {
