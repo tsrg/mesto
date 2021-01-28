@@ -1,6 +1,0 @@
-.popup_closed {
-    display: flex;
-    visibility: hidden;
-    opacity: 0;
-    transition: 0.5s linear;
-}
