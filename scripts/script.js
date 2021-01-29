@@ -66,16 +66,15 @@ initialCards.forEach((item) => {
 
 // PopUp
 function openPopUp (popUp) {
-  popUp.classList.toggle('popup_opened');
+  popUp.classList.add('popup_opened');
 }
 
 function closePopUp (popUp) {
-  popUp.classList.toggle('popup_opened');
+  popUp.classList.remove('popup_opened');
 }
 
 //IMG popup
 function openImgPopUp(evt) {
-  const imgLink = evt.target.src;
   const imgName = evt.target.alt;
   const picture = imgPopUp.querySelector('.img-popup__picture');
   picture.src = evt.target.src;
