@@ -65,8 +65,23 @@ initialCards.forEach((item) => {
 });
 
 // PopUp
+function checkKey(evt) {
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened');
+    document.removeEventListener('keydown', checkKey);
+    closePopUp(openedPopup);
+  }
+}
+
 function openPopUp (popUp) {
+  const popupOverlay = popUp.querySelector('.popup__overlay');
+  popupOverlay.addEventListener('click', overlayClick);
   popUp.classList.add('popup_opened');
+  document.addEventListener('keydown', checkKey);
+}
+
+function overlayClick(evt) {
+  closePopUp(evt.target.parentElement);
 }
 
 function closePopUp (popUp) {
