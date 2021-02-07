@@ -1,4 +1,5 @@
 .img-popup__picture {
     height: calc(100vh - 180px);
     padding-top: 90px;
+    z-index: 21;
 }
