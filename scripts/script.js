@@ -1,32 +1,6 @@
 //cards
 const cardsTempalte = document.querySelector('#cards-tempalte').content;
 const cards = document.querySelector('.elements');
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
 
 const imgPopUp = document.querySelector('.img-popup');
 const profileInfo = document.querySelector('.profile__info');
@@ -47,9 +21,66 @@ const placePhoto = fromAddPlace.querySelector('.popup__input_type_photo').value;
 
 const popupOverlays = document.querySelectorAll('.popup__overlay');
 
+
+
+
+
+
+
+//pop-up author
+
+
+function handleFormSubmit (evt) {
+    evt.preventDefault();
+    profileName.textContent = nameInput.value;
+    profileDescription.textContent = popupDescr.value;
+    closePopUp(authorPopUp);
+}
+
+authorPopUp.addEventListener('submit', handleFormSubmit);
+
+
+
+//popup addPlace
+function addPlaceFormSubmit (evt) {
+  evt.preventDefault();
+  const newCard = createCard(placeName, placePhoto);
+  fromAddPlace.querySelector('.popup__form').reset();
+  addCard(cards, newCard);
+  closePopUp(fromAddPlace);
+  return newCard;
+}
+
+
+placeAddCloseButton.addEventListener('click', function () {
+  closePopUp(fromAddPlace);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //initialContent
 function createCard (name, link) {
-  const card = cardsTempalte.cloneNode(true);
+  const card = document.querySelector('#cards-tempalte').content.cloneNode(true);
   const picture = card.querySelector('.element__picture');
   picture.src = link;
   picture.alt = name;
@@ -68,13 +99,21 @@ initialCards.forEach((item) => {
   addCard(cards, createCard(item.name, item.link));
 });
 
-// PopUp
-function checkKey(evt) {
-  if (evt.key === 'Escape') {
-    const openedPopup = document.querySelector('.popup_opened');
-    closePopUp(openedPopup);
-  }
+
+//like
+function likeButtonClick (evt) {
+  evt.target.classList.toggle('element__like-btn_active');
 }
+
+//remove card
+function removeButtonClick (evt) {
+  evt.target.closest('.element').remove();
+}
+
+
+
+
+
 
 function openPopUp (popUp) {
   popUp.classList.add('popup_opened');
@@ -103,54 +142,20 @@ function openImgPopUp(evt) {
   openPopUp(imgPopUp);
 }
 
-imgPopUp.querySelector('.img-popup__close-btn').addEventListener('click', function () {
-  closePopUp(imgPopUp);
-});
 
-//pop-up author
-function openPopupAuthor() {
-  nameInput.value = profileName.textContent;
-  popupDescr.value = profileDescription.textContent;
-  openPopUp(authorPopUp);
+
+
+// PopUp
+function checkKey(evt) {
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopUp(openedPopup);
+  }
 }
 
-function handleFormSubmit (evt) {
-    evt.preventDefault();
-    profileName.textContent = nameInput.value;
-    profileDescription.textContent = popupDescr.value;
-    closePopUp(authorPopUp);
-}
 
-authorPopUp.addEventListener('submit', handleFormSubmit);
+
+
 closeButton.addEventListener('click', function () {
   closePopUp(authorPopUp);
 });
-editButton.addEventListener('click', openPopupAuthor);
-
-//popup addPlace
-function addPlaceFormSubmit (evt) {
-  evt.preventDefault();
-  const newCard = createCard(placeName, placePhoto);
-  fromAddPlace.querySelector('.popup__form').reset();
-  addCard(cards, newCard);
-  closePopUp(fromAddPlace);
-  return newCard;
-}
-
-fromAddPlace.addEventListener('submit', addPlaceFormSubmit);
-placeAddCloseButton.addEventListener('click', function () {
-  closePopUp(fromAddPlace);
-});
-placeAddButton.addEventListener('click', function () {
-  openPopUp(fromAddPlace);
-});
-
-//like
-function likeButtonClick (evt) {
-  evt.target.classList.toggle('element__like-btn_active');
-}
-
-//remove card
-function removeButtonClick (evt) {
-  evt.target.closest('.element').remove();
-}
