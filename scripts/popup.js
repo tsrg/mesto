@@ -4,7 +4,7 @@ import {Card, addCard} from './card.js'
 export function openPopUp (popUp) {
   popUp.classList.add('popup_opened');
   document.addEventListener('keydown', checkKey);
-  popUp.querySelector('.button_type_close-pop-up').addEventListener('click', function () {
+  popUp.querySelector('.popup__close-btn').addEventListener('click', function () {
     closePopUp(popUp);
   });
   }
@@ -12,7 +12,7 @@ export function openPopUp (popUp) {
 export function closePopUp (popUp) {
   popUp.classList.remove('popup_opened');
   document.removeEventListener('keydown', checkKey);
-  popUp.querySelector('.button_type_close-pop-up').removeEventListener('click', function () {
+  popUp.querySelector('.popup__close-btn').removeEventListener('click', function () {
     closePopUp(popUp);
   });
 }
