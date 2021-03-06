@@ -1,6 +1,7 @@
 import {Card, addCard} from './card.js';
-import {initialCards, cards, popupOverlays, editButton, placeAddButton, fromAddPlace, authorPopUp} from './constants.js';
+import {initialCards, cards, popupOverlays, editButton, placeAddButton, fromAddPlace, authorPopUp, validationSettings, formAuthor, formAddPlace} from './constants.js';
 import {overlayClick, openPopupAuthor, openAddPlace, addPlaceFormSubmit, authorFormSubmit} from './popup.js';
+import {FormValidator} from './validate.js';
 
 popupOverlays.forEach((popupOverlay) => {
   popupOverlay.addEventListener('click', overlayClick);
@@ -19,5 +20,9 @@ authorPopUp.addEventListener('submit', authorFormSubmit);
         });
 
 
+//validate
+const validateFormAuthor = new FormValidator(validationSettings, formAuthor);
+validateFormAuthor.enableValidation();
 
-
+const validateFormAddPlace = new FormValidator(validationSettings, formAddPlace);
+validateFormAddPlace.enableValidation();

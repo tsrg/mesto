@@ -4,7 +4,6 @@ import {Card, addCard} from './card.js'
 export function openPopUp (popUp) {
   popUp.classList.add('popup_opened');
   document.addEventListener('keydown', checkKey);
-  console.log(popUp);
   popUp.querySelector('.button_type_close-pop-up').addEventListener('click', function () {
     closePopUp(popUp);
   });
