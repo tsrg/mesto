@@ -3,7 +3,7 @@
     font-size: 12px;
     line-height: 15px;
     position: absolute;
-    top: 35px;
+    top: 48px;
     opacity: 0;
     transition: opacity 0.5s linear;
 }

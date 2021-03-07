@@ -1,5 +1,6 @@
 import {nameInput, profileName, popupDescr, profileDescription, authorPopUp, fromAddPlace, placeName, placePhoto, cards} from './constants.js';
-import {Card, addCard} from './card.js'
+import {Card} from './card.js'
+import {addCard} from './index.js'
 
 export function openPopUp (popUp) {
   popUp.classList.add('popup_opened');
@@ -40,6 +41,8 @@ export function openAddPlace() {
 
 export function addPlaceFormSubmit (evt) {
   evt.preventDefault();
+  const placeName = fromAddPlace.querySelector('.popup__input_type_place-name').value;
+  const placePhoto = fromAddPlace.querySelector('.popup__input_type_photo').value;
   const item = {};
   item.name = placeName;
   item.link = placePhoto;
@@ -50,7 +53,7 @@ export function addPlaceFormSubmit (evt) {
   return newCard;
 }
 
-export function authorFormSubmit (evt) {
+export function submitAuthorForm (evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileDescription.textContent = popupDescr.value;

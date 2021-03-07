@@ -41,20 +41,8 @@ export class Card {
 
     card.querySelector('.element__like-btn').addEventListener('click', this._likeButtonClick);
     card.querySelector('.element__remove-btn').addEventListener('click', this._removeButtonClick);
-    picture.addEventListener('click', openImgPopUp);
+    picture.addEventListener('click', this._openImgPopUp);
 
     return card;
   }
-}
-
-export function openImgPopUp(evt) {
-  const imgName = evt.target.alt;
-  picture.src = evt.target.src;
-  picture.alt = imgName;
-  imgTitle.textContent = imgName;
-  openPopUp(imgPopUp);
-}
-
-export function addCard (container, cardElement) {
-  container.prepend(cardElement);
 }

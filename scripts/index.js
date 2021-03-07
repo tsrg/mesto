@@ -1,7 +1,15 @@
-import {Card, addCard} from './card.js';
+import {Card} from './card.js';
 import {initialCards, cards, popupOverlays, editButton, placeAddButton, fromAddPlace, authorPopUp, validationSettings, formAuthor, formAddPlace} from './constants.js';
-import {overlayClick, openPopupAuthor, openAddPlace, addPlaceFormSubmit, authorFormSubmit} from './popup.js';
+import {overlayClick, openPopupAuthor, openAddPlace, addPlaceFormSubmit, submitAuthorForm} from './popup.js';
 import {FormValidator} from './validate.js';
+
+
+
+
+export function addCard (container, cardElement) {
+  container.prepend(cardElement);
+}
+
 
 popupOverlays.forEach((popupOverlay) => {
   popupOverlay.addEventListener('click', overlayClick);
@@ -10,7 +18,7 @@ popupOverlays.forEach((popupOverlay) => {
 editButton.addEventListener('click', openPopupAuthor);
 placeAddButton.addEventListener('click', openAddPlace);
 fromAddPlace.addEventListener('submit', addPlaceFormSubmit);
-authorPopUp.addEventListener('submit', authorFormSubmit);
+authorPopUp.addEventListener('submit', submitAuthorForm);
 
 
         initialCards.forEach((item) => {
