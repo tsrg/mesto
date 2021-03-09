@@ -37,6 +37,7 @@ export const editButton = document.querySelector('.profile__edit-button');
 export const closeButton = authorPopUp.querySelector('.popup__close-btn');
 export const fromAddPlace = document.querySelector('.popup_type_add-place');
 export const placeAddButton = document.querySelector('.profile__add-button');
+export const placeSbmtButton = fromAddPlace.querySelector('.popup__submit-btn');
 export const placeAddCloseButton = fromAddPlace.querySelector('.popup__close-btn');
 export const imgTitle = imgPopUp.querySelector('.popup__img-title');
 export const picture = imgPopUp.querySelector('.popup__picture');

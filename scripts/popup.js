@@ -1,4 +1,4 @@
-import {nameInput, profileName, popupDescr, profileDescription, authorPopUp, fromAddPlace, placeName, placePhoto, cards} from './constants.js';
+import {nameInput, profileName, popupDescr, profileDescription, authorPopUp, fromAddPlace, placeName, placePhoto, cards, placeSbmtButton, validationSettings} from './constants.js';
 import {Card} from './card.js'
 import {addCard} from './index.js'
 
@@ -36,6 +36,8 @@ export function openPopupAuthor() {
 }
 
 export function openAddPlace() {
+  placeSbmtButton.disabled = true;
+  placeSbmtButton.classList.add(validationSettings.inactiveButtonClass);
   openPopUp(fromAddPlace);
 }
 
