@@ -1,11 +1,11 @@
-import {picture, imgTitle, imgPopUp} from './constants.js';
-import {openPopUp, checkKey, closePopUp} from './popup.js';
-export class Card {
+import {picture, imgTitle, imgPopUp} from '../utils/constants.js';
+export default class Card {
 
-  constructor(data, cardSelector) {
+  constructor(data, cardSelector, handleCardClick) {
     this._cardSelector = cardSelector;
     this._name = data.name;
     this._link = data.link;
+    this._handleCardClick = handleCardClick;
 
   }
 

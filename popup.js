@@ -1,5 +1,5 @@
-import {nameInput, profileName, popupDescr, profileDescription, authorPopUp, fromAddPlace, placeName, placePhoto, cards, placeSbmtButton, validationSettings} from './constants.js';
-import {Card} from './card.js'
+import {nameInput, profileName, popupDescr, profileDescription, authorPopUp, fromAddPlace, placeName, placePhoto, cards, placeSbmtButton, validationSettings} from './utils/constants.js';
+import {Card} from './components/card.js'
 import {addCard} from './index.js'
 
 export function openPopUp (popUp) {

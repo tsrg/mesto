@@ -1,7 +1,7 @@
-import {Card} from './card.js';
-import {initialCards, cards, popupOverlays, editButton, placeAddButton, fromAddPlace, authorPopUp, validationSettings, formAuthor, formAddPlace} from './constants.js';
-import {overlayClick, openPopupAuthor, openAddPlace, addPlaceFormSubmit, submitAuthorForm} from './popup.js';
-import {FormValidator} from './validate.js';
+import {Card} from '../components/card.js';
+import {initialCards, cards, popupOverlays, editButton, placeAddButton, fromAddPlace, authorPopUp, validationSettings, formAuthor, formAddPlace} from '../utils/constants.js';
+import {overlayClick, openPopupAuthor, openAddPlace, addPlaceFormSubmit, submitAuthorForm} from '../popup.js';
+import {FormValidator} from '../components/validate.js';
 
 
 
