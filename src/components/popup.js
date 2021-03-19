@@ -1,9 +1,10 @@
 
 
-export class Popup {
+export default class Popup {
 
     constructor (selector) {
         this._popupContainer = document.querySelector(selector);
+        console.log(this._popupContainer);
     }
 
     _handleEscClose() {

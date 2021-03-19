@@ -41,7 +41,7 @@ export default class Card {
 
     card.querySelector('.element__like-btn').addEventListener('click', this._likeButtonClick);
     card.querySelector('.element__remove-btn').addEventListener('click', this._removeButtonClick);
-    picture.addEventListener('click', this._openImgPopUp);
+    picture.addEventListener('click', this._handleCardClick.open);
 
     return card;
   }
