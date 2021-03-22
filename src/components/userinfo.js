@@ -1,21 +1,21 @@
 import Popup from './popup.js';
 
-export class UserInfo {
+export default class UserInfo {
 
     constructor (data) {
-        this._name = document.querySelector(data.name);
-        this._authorInfo = document.querySelector(data.authorInfo);
+        this._nameSelector = data.name;
+        this._authorInfoSelector = data.authorInfo;
     }
 
     getUserInfo() {
-        const user = {};
-        user.name = this._name;
-        user.info = this._authorInfo;
+        let user = {};
+        user.name = document.querySelector(this._nameSelector).textContent;
+        user.info = document.querySelector(this._authorInfoSelector).textContent;
         return user;
     }
 
     setUserInfo(userName, userInfo) {
-        this._name = userName;
-        this._authorInfo = userInfo;
+        document.querySelector(this._nameSelector).textContent = userName;
+        document.querySelector(this._authorInfoSelector).textContent = userInfo;
     }
 }

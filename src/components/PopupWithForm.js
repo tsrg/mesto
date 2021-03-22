@@ -1,9 +1,10 @@
 import Popup from './popup.js';
 
-export class PopupWithForm extends Popup {
+export default class PopupWithForm extends Popup {
 
     constructor (selector, formSubmit) {
-        this._popupContainer = document.querySelector(selector);;
+        super(selector);
+        this._popupContainer = document.querySelector(selector);
         this._formSubmit = formSubmit;
         this._form = this._popupContainer.querySelector('.popup__form');
     }
@@ -13,11 +14,8 @@ export class PopupWithForm extends Popup {
     }
 
     setEventListeners() {
-        this._popupContainer.addEventListener('keydown', this._handleEscClose);
-        this._popupContainer.querySelector('.popup__close-btn').addEventListener('clik', function () {
-            this.close();
-        });
-        this._form.addEventListener('submit', formSubmit);
+        this._popupContainer.querySelector('.popup__close-btn').addEventListener('click', () => {this.close()});
+        this._form.addEventListener('submit', this._formSubmit);
     }
 
     close() {

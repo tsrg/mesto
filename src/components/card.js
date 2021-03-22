@@ -24,13 +24,14 @@ export default class Card {
     evt.target.closest('.element').remove();
   }
 
+  /*
   _openImgPopUp(evt) {
     const imgName = evt.target.alt;
     picture.src = evt.target.src;
     picture.alt = imgName;
     imgTitle.textContent = imgName;
     openPopUp(imgPopUp);
-  }
+  } */
 
   createCard() {
     const card = this._getTempalte();
@@ -41,7 +42,7 @@ export default class Card {
 
     card.querySelector('.element__like-btn').addEventListener('click', this._likeButtonClick);
     card.querySelector('.element__remove-btn').addEventListener('click', this._removeButtonClick);
-    picture.addEventListener('click', this._handleCardClick.open);
+    picture.addEventListener('click', this._handleCardClick);
 
     return card;
   }

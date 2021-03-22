@@ -56,3 +56,7 @@ export const validationSettings = {
 };
 export const formAuthor = authorPopUp.querySelector('.popup__form_type_author');
 export const formAddPlace = fromAddPlace.querySelector('.popup__form_type_add-place');
+export const userSelectors = {
+  name: '.profile__title',
+  authorInfo: '.profile__subtitle'
+};
