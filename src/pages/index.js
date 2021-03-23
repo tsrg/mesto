@@ -34,14 +34,15 @@ const initCards = new Section(cards, {
 const user = new UserInfo(userSelectors);
 
 //-------------------*PopUp редактирование автора------------------------
-const authPopUp = new PopupWithForm(authorPopUpSelector, function (evt) {
+const authPopUp = new PopupWithForm(authorPopUpSelector, function (evt, inputValues) {
     evt.preventDefault();
-    console.log(this.formValues);
+    
     authPopUp.close();
     
-    const userName = authorPopUp.querySelector(nameInputSelector).value;
-    const info = authorPopUp.querySelector(descriptionInputSelector).value;
-    user.setUserInfo(userName, info);
+    //const userName = authorPopUp.querySelector(nameInputSelector).value;
+    //const info = authorPopUp.querySelector(descriptionInputSelector).value;
+    user.setUserInfo(inputValues.authorName, inputValues.athorDescription);
+    console.log(inputValues);
     
 });
 

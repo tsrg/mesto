@@ -18,7 +18,7 @@ export default class PopupWithForm extends Popup {
             }
         //}
         console.log(formValues);
-        return formElements;
+        return formValues;
     }
 
     _clearWarnings() {
@@ -37,14 +37,14 @@ export default class PopupWithForm extends Popup {
 
     setEventListeners() {
         super.setEventListeners();
-        //this._form.addEventListener('submit', this._getInputValues());
-        this._form.addEventListener('submit', {handleEvent: this._submitFormHandler, formValues: this._getInputValues()});
+        //this._form.addEventListener('submit', (evt) => {this._getInputValues(); this._submitFormHandler(evt));
+        this._form.addEventListener('submit', (evt) => {this._submitFormHandler(evt, this._getInputValues())});
     }
 
     close() {
-        this._getInputValues();
+        //this._getInputValues();
         super.close();
         this._clearWarnings();
-        this._form.reset();
+        //this._form.reset();
     }
 }
