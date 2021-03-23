@@ -1,7 +1,10 @@
 import './index.css';
-import {initialCards, cards, popupOverlays, editButton,
-        placeAddButton, fromAddPlace, authorPopUp, validationSettings, 
-        formAuthor, formAddPlace, userSelectors, nameInput, popupDescr, placeSbmtButton} from '../utils/constants.js';
+import {initialCards, cards, editButton,
+        placeAddButton, authorPopUp, validationSettings,
+        formAuthor, formAddPlace, userSelectors, nameInput, popupDescr,
+        placeSbmtButton, authorPopUpSelector, nameInputSelector,
+        descriptionInputSelector, addPlacePopUpSelector, placeNameInputSelector,
+        placePhotoInputSelector, placeName, placePhoto} from '../utils/constants.js';
 import Card from '../components/card.js';
 import Section from '../components/Section.js';
 import PopupWithImage from '../components/PopUpWithImage.js';
@@ -9,11 +12,16 @@ import PopupWithForm from '../components/PopupWithForm.js';
 import FormValidator from '../components/FormValidator.js';
 import UserInfo from '../components/UserInfo.js';
 
+function createCard(item) {
+    const card = new Card(item, '#cards-tempalte', imgPopUp.open.bind(imgPopUp));
+    return card;
+}
+
 //------ *начальный контент* ----------
 const initCards = new Section(cards, {
     data: initialCards,
     renderer: (item) => {
-        const card = new Card(item, '#cards-tempalte', imgPopUp.open.bind(imgPopUp));
+        const card = createCard(item);
         const cardElement = card.createCard();
         initCards.addItem(cardElement);
         }
@@ -26,26 +34,27 @@ const initCards = new Section(cards, {
 const user = new UserInfo(userSelectors);
 
 //-------------------*PopUp редактирование автора------------------------
-const authPopUp = new PopupWithForm('.popup_type_author', (evt) => {
+const authPopUp = new PopupWithForm(authorPopUpSelector, function (evt) {
     evt.preventDefault();
-    const userName = authorPopUp.querySelector('.popup__input_type_name').value;
-    const info = authorPopUp.querySelector('.popup__input_type_description').value;
-    user.setUserInfo(userName, info);
+    console.log(this.formValues);
     authPopUp.close();
+    
+    const userName = authorPopUp.querySelector(nameInputSelector).value;
+    const info = authorPopUp.querySelector(descriptionInputSelector).value;
+    user.setUserInfo(userName, info);
+    
 });
 
 //-----------------------------------------------------------------------
 
 
 //-------------------*popUp добавить место*------------------------------
-const addPopUp = new PopupWithForm('.popup_type_add-place', (evt) => {
-    evt.preventDefault();
-    const placeName = fromAddPlace.querySelector('.popup__input_type_place-name').value;
-    const placePhoto = fromAddPlace.querySelector('.popup__input_type_photo').value;
+const addPopUp = new PopupWithForm(addPlacePopUpSelector, (evt) => {
+    //evt.preventDefault();
     const item = {};
     item.name = placeName;
     item.link = placePhoto;
-    const newCard = new Card(item, '#cards-tempalte', imgPopUp.open.bind(imgPopUp));
+    const newCard = createCard(item);
     const newCardElement = newCard.createCard();
     initCards.addItem(newCardElement);
     addPopUp.close();

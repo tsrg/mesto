@@ -8,8 +8,8 @@ export default class Card {
 
   }
 
-  _getTempalte() {
-    const cardElemet = document.querySelector('#cards-tempalte').content.cloneNode(true);
+  _getTemplate() {
+    const cardElemet = document.querySelector(this._cardSelector).content.cloneNode(true);
 
     return cardElemet
   }
@@ -22,16 +22,20 @@ export default class Card {
     evt.target.closest('.element').remove();
   }
 
+  _setEventListeners(card, picture) {
+    card.querySelector('.element__like-btn').addEventListener('click', this._likeButtonClick);
+    card.querySelector('.element__remove-btn').addEventListener('click', this._removeButtonClick);
+    picture.addEventListener('click', this._handleCardClick);
+  }
+
   createCard() {
-    const card = this._getTempalte();
+    const card = this._getTemplate();
     const picture = card.querySelector('.element__picture');
     picture.src = this._link;
     picture.alt = this._name;
     card.querySelector('.element__title').textContent = this._name;
+    this._setEventListeners(card, picture);
 
-    card.querySelector('.element__like-btn').addEventListener('click', this._likeButtonClick);
-    card.querySelector('.element__remove-btn').addEventListener('click', this._removeButtonClick);
-    picture.addEventListener('click', this._handleCardClick);
 
     return card;
   }

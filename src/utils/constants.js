@@ -35,24 +35,32 @@ export const profileDescription = profileInfo.querySelector('.profile__subtitle'
 export const nameInput = authorPopUp.querySelector('.popup__input_type_name');
 export const editButton = document.querySelector('.profile__edit-button');
 export const closeButton = authorPopUp.querySelector('.popup__close-btn');
-export const fromAddPlace = document.querySelector('.popup_type_add-place');
+export const popUpAddPlace = document.querySelector('.popup_type_add-place');
 export const placeAddButton = document.querySelector('.profile__add-button');
-export const placeSbmtButton = fromAddPlace.querySelector('.popup__submit-btn');
-export const placeAddCloseButton = fromAddPlace.querySelector('.popup__close-btn');
+export const placeSbmtButton = popUpAddPlace.querySelector('.popup__submit-btn');
+export const placeAddCloseButton = popUpAddPlace.querySelector('.popup__close-btn');
 export const imgTitle = imgPopUp.querySelector('.popup__img-title');
 export const picture = imgPopUp.querySelector('.popup__picture');
-export const placeName = fromAddPlace.querySelector('.popup__input_type_place-name').value;
-export const placePhoto = fromAddPlace.querySelector('.popup__input_type_photo').value;
+export const placeName = popUpAddPlace.querySelector('.popup__input_type_place-name').value;
+export const placePhoto = popUpAddPlace.querySelector('.popup__input_type_photo').value;
 export const popupOverlay = document.querySelectorAll('.popup__overlay');
 
 
 export const formAuthor = authorPopUp.querySelector('.popup__form_type_author');
-export const formAddPlace = fromAddPlace.querySelector('.popup__form_type_add-place');
+export const formAddPlace = document.querySelector('.popup__form_type_add-place');
+
+
+export const authorPopUpSelector = '.popup_type_author';
+export const nameInputSelector = '.popup__input_type_name';
+export const descriptionInputSelector = '.popup__input_type_description';
+export const addPlacePopUpSelector = '.popup_type_add-place';
+export const placeNameInputSelector = '.popup__input_type_place-name';
+export const placePhotoInputSelector = '.popup__input_type_photo';
+
 export const userSelectors = {
   name: '.profile__title',
   authorInfo: '.profile__subtitle'
 };
-
 
 export const validationSettings = {
   formSelector: '.popup__form',
