@@ -36,14 +36,8 @@ const user = new UserInfo(userSelectors);
 //-------------------*PopUp редактирование автора------------------------
 const authPopUp = new PopupWithForm(authorPopUpSelector, function (evt, inputValues) {
     evt.preventDefault();
-    
     authPopUp.close();
-    
-    //const userName = authorPopUp.querySelector(nameInputSelector).value;
-    //const info = authorPopUp.querySelector(descriptionInputSelector).value;
     user.setUserInfo(inputValues.authorName, inputValues.athorDescription);
-    console.log(inputValues);
-    
 });
 
 //-----------------------------------------------------------------------

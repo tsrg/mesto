@@ -13,11 +13,10 @@ export default class PopupWithForm extends Popup {
         const formElements = document.querySelector('.popup__form').elements;
         const formValues = {};
         for (let i = 0; i < formElements.length; i++) {
-        //    if ( formElements[i].nodeName === "INPUT") {
+            if ( formElements[i].nodeName === "INPUT" && formElements[i].type === "text") {
                 formValues[formElements[i].name] = formElements[i].value;
             }
-        //}
-        console.log(formValues);
+        }
         return formValues;
     }
 
@@ -37,14 +36,12 @@ export default class PopupWithForm extends Popup {
 
     setEventListeners() {
         super.setEventListeners();
-        //this._form.addEventListener('submit', (evt) => {this._getInputValues(); this._submitFormHandler(evt));
         this._form.addEventListener('submit', (evt) => {this._submitFormHandler(evt, this._getInputValues())});
     }
 
     close() {
-        //this._getInputValues();
         super.close();
         this._clearWarnings();
-        //this._form.reset();
+        this._form.reset();
     }
 }
