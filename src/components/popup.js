@@ -1,4 +1,3 @@
-
 export default class Popup {
 
     constructor (selector) {
@@ -11,9 +10,14 @@ export default class Popup {
         }
     }
 
+    _overlayClick(evt) {
+
+    }
+
     open() {
         this._popupContainer.classList.add('popup_opened');
         document.addEventListener('keydown', this._handleEscClose);
+        this._popupContainer.querySelector('.popup__overlay').addEventListener('click', () => {this.close()});
     }
 
     close() {

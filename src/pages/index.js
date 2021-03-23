@@ -1,14 +1,13 @@
 import './index.css';
 import {initialCards, cards, popupOverlays, editButton,
         placeAddButton, fromAddPlace, authorPopUp, validationSettings, 
-        formAuthor, formAddPlace, userSelectors, nameInput, popupDescr} from '../utils/constants.js';
+        formAuthor, formAddPlace, userSelectors, nameInput, popupDescr, placeSbmtButton} from '../utils/constants.js';
 import Card from '../components/card.js';
-import Section from '../components/section.js';
-import PopUp from '../components/popup.js';
-import PopupWithImage from '../components/popupwithimage.js';
+import Section from '../components/Section.js';
+import PopupWithImage from '../components/PopUpWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
-import FormValidator from '../components/validate.js';
-import UserInfo from '../components/userinfo.js';
+import FormValidator from '../components/FormValidator.js';
+import UserInfo from '../components/UserInfo.js';
 
 //------ *начальный контент* ----------
 const initCards = new Section(cards, {
@@ -49,9 +48,8 @@ const addPopUp = new PopupWithForm('.popup_type_add-place', (evt) => {
     const newCard = new Card(item, '#cards-tempalte', imgPopUp.open.bind(imgPopUp));
     const newCardElement = newCard.createCard();
     initCards.addItem(newCardElement);
-    //console.log(cardElement);
     addPopUp.close();
-  });
+});
 
 //--------------------------------------------------------------------------
 
@@ -68,7 +66,12 @@ editButton.addEventListener('click', () => {
     popupDescr.value = user.getUserInfo().info;
     authPopUp.open();
 });       //--откр. popUp инф.пользователя--
-placeAddButton.addEventListener('click', addPopUp.open.bind(addPopUp));     //--откр. popUp добавить место----
+placeAddButton.addEventListener('click', () => {
+
+    placeSbmtButton.disabled = true;
+    placeSbmtButton.classList.add(validationSettings.inactiveButtonClass);
+    addPopUp.open();
+});     //--откр. popUp добавить место----
 
 
 authPopUp.setEventListeners();

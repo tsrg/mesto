@@ -43,9 +43,17 @@ export const imgTitle = imgPopUp.querySelector('.popup__img-title');
 export const picture = imgPopUp.querySelector('.popup__picture');
 export const placeName = fromAddPlace.querySelector('.popup__input_type_place-name').value;
 export const placePhoto = fromAddPlace.querySelector('.popup__input_type_photo').value;
-export const popupOverlays = document.querySelectorAll('.popup__overlay');
+export const popupOverlay = document.querySelectorAll('.popup__overlay');
 
-//validation
+
+export const formAuthor = authorPopUp.querySelector('.popup__form_type_author');
+export const formAddPlace = fromAddPlace.querySelector('.popup__form_type_add-place');
+export const userSelectors = {
+  name: '.profile__title',
+  authorInfo: '.profile__subtitle'
+};
+
+
 export const validationSettings = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
@@ -53,10 +61,4 @@ export const validationSettings = {
   inactiveButtonClass: 'popup__submit-btn_condition_inactive',
   inputErrorClass: 'popup__input_condition_warning',
   errorClass: 'popup__input-warning_active'
-};
-export const formAuthor = authorPopUp.querySelector('.popup__form_type_author');
-export const formAddPlace = fromAddPlace.querySelector('.popup__form_type_add-place');
-export const userSelectors = {
-  name: '.profile__title',
-  authorInfo: '.profile__subtitle'
 };
