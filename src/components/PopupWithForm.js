@@ -10,7 +10,7 @@ export default class PopupWithForm extends Popup {
     }
 
     _getInputValues() {
-        const formElements = document.querySelector('.popup__form').elements;
+        const formElements = this._popupContainer.querySelector('.popup__form').elements;
         const formValues = {};
         for (let i = 0; i < formElements.length; i++) {
             if ( formElements[i].nodeName === "INPUT" && formElements[i].type === "text") {
@@ -20,18 +20,18 @@ export default class PopupWithForm extends Popup {
         return formValues;
     }
 
-    _clearWarnings() {
-        const warnings = this._popupContainer.querySelectorAll('.popup__input-warning_active');
-        if (warnings === !null) {
-        warnings.forEach(element => {
-            element.classList.remove('popup__input-warning_active');
-        });
-        const inputWarnings = this._popupContainer.querySelectorAll('.popup__input_condition_warning');
-        inputWarnings.forEach(element => {
-            element.classList.remove('popup__input_condition_warning');
-        });
-        this._popupContainer.querySelector('.popup__submit-btn_condition_inactive').classList.remove('popup__submit-btn_condition_inactive');
-    }
+    clearWarnings() { 
+        const warnings = this._popupContainer.querySelectorAll('.popup__input-warning_active'); 
+        //if (warnings === !null) { 
+        warnings.forEach(element => { 
+            element.classList.remove('popup__input-warning_active'); 
+        }); 
+        const inputWarnings = this._popupContainer.querySelectorAll('.popup__input_condition_warning'); 
+        inputWarnings.forEach(element => { 
+            element.classList.remove('popup__input_condition_warning'); 
+        }); 
+        this._popupContainer.querySelector('.popup__submit-btn_condition_inactive').classList.remove('popup__submit-btn_condition_inactive'); 
+   // }
     }
 
     setEventListeners() {
@@ -41,7 +41,7 @@ export default class PopupWithForm extends Popup {
 
     close() {
         super.close();
-        this._clearWarnings();
+        this.clearWarnings();
         this._form.reset();
     }
 }
