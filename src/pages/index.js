@@ -5,7 +5,7 @@ import {initialCards, cards, editButton,
         placeSbmtButton, authorPopUpSelector, nameInputSelector,
         descriptionInputSelector, addPlacePopUpSelector, placeNameInputSelector,
         placePhotoInputSelector, cardsTempalteSelector, imgPopUpSelector} from '../utils/constants.js';
-import Card from '../components/card.js';
+import Card from '../components/Card.js';
 import Section from '../components/Section.js';
 import PopupWithImage from '../components/PopUpWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
