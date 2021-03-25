@@ -41,14 +41,15 @@ export const placeSbmtButton = popUpAddPlace.querySelector('.popup__submit-btn')
 export const placeAddCloseButton = popUpAddPlace.querySelector('.popup__close-btn');
 export const imgTitle = imgPopUp.querySelector('.popup__img-title');
 export const picture = imgPopUp.querySelector('.popup__picture');
-export const placeName = popUpAddPlace.querySelector('.popup__input_type_place-name').value;
-export const placePhoto = popUpAddPlace.querySelector('.popup__input_type_photo').value;
 export const popupOverlay = document.querySelectorAll('.popup__overlay');
 export const cardsTempalteSelector = '#cards-tempalte';
 export const imgPopUpSelector = '.popup_type_img-popup';
 
 export const formAuthor = authorPopUp.querySelector('.popup__form_type_author');
 export const formAddPlace = document.querySelector('.popup__form_type_add-place');
+
+//export const placeName = formAddPlace.querySelector('.popup__input_type_place-name').value;
+//export const placePhoto = formAddPlace.querySelector('.popup__input_type_photo');
 
 export const authorPopUpSelector = '.popup_type_author';
 export const nameInputSelector = '.popup__input_type_name';
