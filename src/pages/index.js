@@ -54,18 +54,24 @@ const addPopUp = new PopupWithForm(addPlacePopUpSelector, (evt) => {
 //------------------------*popUp картинки*--------------------------
 const imgPopUp = new PopupWithImage(imgPopUpSelector);
 
+//--------------*Валидация форм*--------------------------------------------------
+const validateFormAuthor = new FormValidator(validationSettings, formAuthor);
+validateFormAuthor.enableValidation();
+const validateFormAddPlace = new FormValidator(validationSettings, formAddPlace);
+validateFormAddPlace.enableValidation();
+
 //------------------------*слушатели событий*-----------------------------------------------------------------
 editButton.addEventListener('click', () => {
     nameInput.value = user.getUserInfo().name;
     popupDescr.value = user.getUserInfo().info;
-    authPopUp.clearWarnings();
+    validateFormAuthor.clearWarnings();
     authPopUp.open();
 });       //--откр. popUp инф.пользователя--
 placeAddButton.addEventListener('click', () => {
     placeSbmtButton.disabled = true;
     placeSbmtButton.classList.add(validationSettings.inactiveButtonClass);
     addPopUp.open();
-    addPopUp.clearWarnings();
+    validateFormAddPlace.clearWarnings();
 });     //--откр. popUp добавить место----
 
 authPopUp.setEventListeners();
@@ -74,9 +80,3 @@ addPopUp.setEventListeners();
 
 //-------*Отрисовка начального контента*------
 initCards.renderItems();
-
-//--------------*Валидация форм*--------------------------------------------------
-const validateFormAuthor = new FormValidator(validationSettings, formAuthor);
-validateFormAuthor.enableValidation();
-const validateFormAddPlace = new FormValidator(validationSettings, formAddPlace);
-validateFormAddPlace.enableValidation();

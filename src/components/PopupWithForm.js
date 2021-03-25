@@ -20,19 +20,6 @@ export default class PopupWithForm extends Popup {
         return formValues;
     }
 
-    clearWarnings() {
-        const warnings = this._popupContainer.querySelectorAll('.popup__input-warning_active');
-        if (warnings.length > 0) {
-        warnings.forEach(element => {
-            element.classList.remove('popup__input-warning_active');
-        });
-        const inputWarnings = this._popupContainer.querySelectorAll('.popup__input_condition_warning');
-        inputWarnings.forEach(element => {
-            element.classList.remove('popup__input_condition_warning');
-        });
-    }
-    }
-
     setEventListeners() {
         super.setEventListeners();
         this._form.addEventListener('submit', (evt) => {this._submitFormHandler(evt, this._getInputValues())});
