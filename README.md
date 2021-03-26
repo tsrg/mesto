@@ -5,7 +5,3 @@
 Проект на git hub pages: <https://tsrg.github.io/mesto/>
 
 *Использованы HTML, CSS, JavaScript*
-
-
-Я не могу найти отмеченых ошибок, у меня их нет!((
-    вот видео: https://youtu.be/L6mE4edtF00
