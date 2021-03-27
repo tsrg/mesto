@@ -48,8 +48,8 @@ export const imgPopUpSelector = '.popup_type_img-popup';
 export const formAuthor = authorPopUp.querySelector('.popup__form_type_author');
 export const formAddPlace = document.querySelector('.popup__form_type_add-place');
 
-//export const placeName = formAddPlace.querySelector('.popup__input_type_place-name').value;
-//export const placePhoto = formAddPlace.querySelector('.popup__input_type_photo');
+export const placeName = formAddPlace.querySelector('.popup__input_type_place-name');
+export const placePhoto = formAddPlace.querySelector('.popup__input_type_photo');
 
 export const authorPopUpSelector = '.popup_type_author';
 export const nameInputSelector = '.popup__input_type_name';
@@ -69,5 +69,8 @@ export const validationSettings = {
   submitButtonSelector: '.popup__submit-btn',
   inactiveButtonClass: 'popup__submit-btn_condition_inactive',
   inputErrorClass: 'popup__input_condition_warning',
-  errorClass: 'popup__input-warning_active'
+  errorClass: 'popup__input-warning_active',
+  inputErrorSelector: '.popup__input_condition_warning',
+  errorSelector: '.popup__input-warning_active'
+
 };

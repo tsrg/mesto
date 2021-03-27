@@ -57,14 +57,14 @@ export default class FormValidator {
 };
 
   clearWarnings() {
-    const warnings = this._form.querySelectorAll('.popup__input-warning_active');
+    const warnings = this._form.querySelectorAll(this._validationSettings.errorSelector);
     if (warnings.length > 0) {
     warnings.forEach(element => {
-        element.classList.remove('popup__input-warning_active');
+        element.classList.remove(this._validationSettings.errorClass);
     });
-    const inputWarnings = this._form.querySelectorAll('.popup__input_condition_warning');
+    const inputWarnings = this._form.querySelectorAll(this._validationSettings.inputErrorSelector);
     inputWarnings.forEach(element => {
-        element.classList.remove('popup__input_condition_warning');
+        element.classList.remove(this._validationSettings.inputErrorClass);
     });
 }
 }

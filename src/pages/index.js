@@ -3,8 +3,8 @@ import {initialCards, cards, editButton,
         placeAddButton, authorPopUp, validationSettings,
         formAuthor, formAddPlace, userSelectors, nameInput, popupDescr,
         placeSbmtButton, authorPopUpSelector, nameInputSelector,
-        descriptionInputSelector, addPlacePopUpSelector, placeNameInputSelector,
-        placePhotoInputSelector, cardsTempalteSelector, imgPopUpSelector} from '../utils/constants.js';
+        descriptionInputSelector, addPlacePopUpSelector, placePhoto,
+        placeName, cardsTempalteSelector, imgPopUpSelector} from '../utils/constants.js';
 import Card from '../components/Card.js';
 import Section from '../components/Section.js';
 import PopupWithImage from '../components/PopUpWithImage.js';
@@ -38,13 +38,11 @@ const authPopUp = new PopupWithForm(authorPopUpSelector, function (evt, inputVal
 });
 
 //-------------------*popUp добавить место*------------------------------
-const placeName = formAddPlace.querySelector('.popup__input_type_place-name').value;
-const placePhoto = formAddPlace.querySelector('.popup__input_type_photo');
 const addPopUp = new PopupWithForm(addPlacePopUpSelector, (evt) => {
     evt.preventDefault();
     const item = {};
-    item.name = formAddPlace.querySelector('.popup__input_type_place-name').value;
-    item.link = formAddPlace.querySelector('.popup__input_type_photo').value;
+    item.name = placeName.value;
+    item.link = placePhoto.value;
     const newCard = createCard(item);
     const newCardElement = newCard.createCard();
     initCards.addItem(newCardElement);
