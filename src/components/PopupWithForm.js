@@ -13,7 +13,7 @@ export default class PopupWithForm extends Popup {
         const formElements = this._form.elements;
         const formValues = {};
         for (let i = 0; i < formElements.length; i++) {
-            if ( formElements[i].nodeName === "INPUT" && formElements[i].type === "text") {
+            if ( formElements[i].nodeName === "INPUT" && formElements[i].type === "text" || formElements[i].type === "url") {
                 formValues[formElements[i].name] = formElements[i].value;
             }
         }
@@ -27,7 +27,6 @@ export default class PopupWithForm extends Popup {
 
     close() {
         super.close();
-        //this.clearWarnings();
         this._form.reset();
     }
 }

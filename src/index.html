@@ -12,7 +12,10 @@
 </header>
 <main>
 <section class="profile">
+  <div class="profile__avatar-container">
   <img class="profile__avatar" src="<%=require('./images/avatar.jpg')%>" alt="Аватар">
+  <button class="profile__avatar-edit"></button>
+  </div>
   <div class="profile__info">
     <h1 class="profile__title">Жак-Ив Кусто</h1>
     <button class="profile__edit-button" type="button"></button>
@@ -68,6 +71,28 @@
     <div class="popup__overlay"></div>
 </section>
 
+<section class="popup popup_type_remove-card">
+  <form name="remove-card" class="popup__form popup__form_type_remove-card">
+    <h2 class="popup__title">Вы уверены?</h2>
+    <input type="submit" class="popup__submit-btn" value="Да">
+    <button class="popup__close-btn" type="button"></button>
+  </form>
+  <div class="popup__overlay"></div>
+</section>
+
+<section class="popup popup_type_edit-avatar">
+  <form name="edit-avatar" class="popup__form popup__form_type_edit-avatar">
+    <h2 class="popup__title">Обновить аватар</h2>
+    <label class="popup__field">
+      <input type="url" required name="avatar" placeholder="Ссылка на картинку" class="popup__input popup__input_type_avatar">
+      <span class="popup__input-warning popup__input-warning_type_avatar"></span>
+    </label>
+    <input type="submit" class="popup__submit-btn" value="Сохранить">
+    <button class="popup__close-btn" type="button"></button>
+  </form>
+  <div class="popup__overlay"></div>
+</section>
+
 <template id="cards-tempalte">
   <article class="element">
     <div class="element__pic-wrapper">
@@ -75,7 +100,10 @@
     </div>
     <div class="element__title-container">
       <h2 class="element__title"></h2>
-      <button class="element__like-btn" type="button"></button>
+      <div class="element__likes">
+        <button class="element__like-btn" type="button"></button>
+        <span class="element__like-counter">0</span>
+      </div>
     </div>
     <button class="element__remove-btn" type="button"></button>
   </article>

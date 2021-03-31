@@ -1,34 +1,11 @@
-export const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
+export let initialCards = [
 ];
 export const cards = document.querySelector('.elements');
 export const cardsTempalte = document.querySelector('#cards-tempalte').content;
 export const imgPopUp = document.querySelector('.popup_type_img-popup');
 export const profileInfo = document.querySelector('.profile__info');
 export const authorPopUp = document.querySelector('.popup_type_author');
+export const authorPopUpSmbBtn = authorPopUp.querySelector('.popup__submit-btn');
 export const profileName = profileInfo.querySelector('.profile__title')
 export const popupDescr = authorPopUp.querySelector('.popup__input_type_description');
 export const profileDescription = profileInfo.querySelector('.profile__subtitle');
@@ -44,9 +21,17 @@ export const picture = imgPopUp.querySelector('.popup__picture');
 export const popupOverlay = document.querySelectorAll('.popup__overlay');
 export const cardsTempalteSelector = '#cards-tempalte';
 export const imgPopUpSelector = '.popup_type_img-popup';
+export const removePopUpSelector = '.popup_type_remove-card';
+export const removeBtnSelector = '.element__remove-btn';
+export const avatar = document.querySelector('.profile__avatar');
+export const avatarEditBtn = document.querySelector('.profile__avatar-edit');
+export const avatarPopUpSelector = '.popup_type_edit-avatar';
+export const popUpAvatar = document.querySelector(avatarPopUpSelector);
+export const avatarSbmtButton = popUpAvatar.querySelector('.popup__submit-btn');
 
 export const formAuthor = authorPopUp.querySelector('.popup__form_type_author');
 export const formAddPlace = document.querySelector('.popup__form_type_add-place');
+export const formAvatar = document.querySelector('.popup__form_type_edit-avatar');
 
 export const placeName = formAddPlace.querySelector('.popup__input_type_place-name');
 export const placePhoto = formAddPlace.querySelector('.popup__input_type_photo');
@@ -57,10 +42,13 @@ export const descriptionInputSelector = '.popup__input_type_description';
 export const addPlacePopUpSelector = '.popup_type_add-place';
 export const placeNameInputSelector = '.popup__input_type_place-name';
 export const placePhotoInputSelector = '.popup__input_type_photo';
+export const savingText = 'Сохранение...';
+export const saveText = 'Сохранить';
 
 export const userSelectors = {
   name: '.profile__title',
-  authorInfo: '.profile__subtitle'
+  authorInfo: '.profile__subtitle',
+  avatar: '.profile__avatar'
 };
 
 export const validationSettings = {
@@ -72,5 +60,14 @@ export const validationSettings = {
   errorClass: 'popup__input-warning_active',
   inputErrorSelector: '.popup__input_condition_warning',
   errorSelector: '.popup__input-warning_active'
+};
 
+export const apiSettings = {
+  token: 'd3c067e5-dfe9-4c66-9aca-7fc30c1afb49',
+  groupId: 'cohort-21',
+  url: 'https://mesto.nomoreparties.co/v1/',
+  cardsUrl: 'https://mesto.nomoreparties.co/v1/cohort-21/cards',
+  cardsLikeUrl: 'https://mesto.nomoreparties.co/v1/cohort-21/cards/likes',
+  userUrl: 'https://mesto.nomoreparties.co/v1/cohort-21/users/me',
+  updateAvatarUrl: 'https://mesto.nomoreparties.co/v1/cohort-21/users/me/avatar'
 };
