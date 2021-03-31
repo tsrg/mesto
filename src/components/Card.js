@@ -1,6 +1,6 @@
 export default class Card {
 
-  constructor(data, cardSelector, handleCardClick, handleRemoveBtnClick, handleLikeBtnClick, userId) {
+  constructor(data, cardSelector, handleCardClick, handleRemoveBtnClick, userId, addLike, removeLike) {
     this._cardSelector = cardSelector;
     this._name = data.name;
     this._link = data.link;
@@ -9,8 +9,10 @@ export default class Card {
     this._id = data._id;
     this._handleCardClick = handleCardClick;
     this._handleRemoveBtnClick = handleRemoveBtnClick;
-    this._handleLikeBtnClick = handleLikeBtnClick;
     this._userId = userId;
+    this._addLike = addLike;
+    this._removeLike = removeLike;
+
   }
 
   _getTemplate() {
@@ -19,19 +21,35 @@ export default class Card {
     return cardElemet
   }
 
-  _likeButtonClick () {
+  _likeButtonClick(evt) {
     //evt.target.classList.toggle('element__like-btn_active');
-    this._handleRemoveBtnClick(this.card);
+    const counter = evt.target.closest('.element__likes').querySelector('.element__like-counter');
+    if (evt.target.classList.contains('element__like-btn_active')) {
+      this._removeLike(this._id)
+        .then ( () => {
+          evt.target.classList.remove('element__like-btn_active');
+          counter.textContent = parseInt(counter.textContent) - 1; 
+        })
+        .catch( (err) => {console.log(`Ошибка удаления лайка: ${err}`)})
+    } else {
+      this._addLike(this._id)
+        .then( () => {
+          evt.target.classList.add('element__like-btn_active');
+          counter.textContent = parseInt(counter.textContent) + 1; })
+        .catch( (err) => {console.log(`Ошибка добавления лайка: ${err}`)})
+    }
   }
 
   _removeButtonClick () {
     this._handleRemoveBtnClick(this.card);
   }
 
+
   _setEventListeners(card, picture, removeBtn) {
-    card.querySelector('.element__like-btn').addEventListener('click', this._handleLikeBtnClick);
+    //card.querySelector('.element__like-btn').addEventListener('click', this._handleLikeBtnClick);
+    card.querySelector('.element__like-btn').addEventListener('click', (evt) => {this._likeButtonClick(evt)});
     picture.addEventListener('click', this._handleCardClick);
-    if (!(removeBtn === null)) {
+    if (!removeBtn) {
     removeBtn.addEventListener('click', this._handleRemoveBtnClick);
     }
   }
@@ -40,6 +58,7 @@ export default class Card {
     const card = this._getTemplate();
     const picture = card.querySelector('.element__picture');
     const removeBtn = card.querySelector('.element__remove-btn');
+    const id = this._id;
     picture.src = this._link;
     picture.alt = this._name;
     card.querySelector('.element').id = this._id;
